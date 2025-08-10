@@ -108,16 +108,215 @@
   </section>
 
   <!-- Sensors documentation section with fade-left animation -->
-  <section id="sensors" data-aos="fade-left">
-    <h2>Sensor Documentation</h2>
-    <p><strong>DHT11 Sensor:</strong> Measures temperature and humidity. 
-    <h>SO WHAT IS A DHT SENSOR?</h>
-    </p>
-    <p><strong>Ultrasonic Sensor:</strong> Detects movement or obstacles within a defined range. Used to sense nearby animal presence or movement patterns.</p>
-    <p><strong>Sound Sensor:</strong> Detects unexpected or abnormal sounds like elephant trumpets or wildlife roars, triggering the alert system.</p>
-    <p><strong>Gas/Smoke Sensors:</strong> Helpful for detecting harmful gases or human interference like fire that can cause panic among animals.</p>
-    <p>Each sensor is individually calibrated and integrated with the board. Always connect sensors through a logic level converter if the board requires 3.3V logic (like the ESP8266 or ESP32).</p>
-  </section>
+<section id="sensors" data-aos="fade-left">
+  <h2>Sensor Documentation</h2>
+
+  <h3>DHT11 Sensor</h3>
+  <p>The <strong>DHT11</strong> sensor is a widely used, low-cost digital device that measures <em>temperature</em> and <em>relative humidity</em>. It combines a capacitive humidity sensor and a thermistor to produce a calibrated digital output signal.</p>
+
+  <h4>Working Principle</h4>
+  <p>The DHT11 sensor contains a humidity sensing component that measures the moisture content in the air by changing electrical resistance capacitively. The thermistor measures temperature by varying resistance with heat. An internal chip processes these analog signals into a digital form which is sent over a single-wire serial interface to microcontrollers.</p>
+
+  <h4>Specifications</h4>
+  <ul>
+    <li><strong>Operating voltage:</strong> 3.3V to 5V DC</li>
+    <li><strong>Temperature range:</strong> 0 to 50 °C</li>
+    <li><strong>Temperature accuracy:</strong> ±2 °C</li>
+    <li><strong>Humidity range:</strong> 20% to 90% RH</li>
+    <li><strong>Humidity accuracy:</strong> ±5% RH</li>
+    <li><strong>Sampling rate:</strong> Once every 1 second</li>
+    <li><strong>Communication protocol:</strong> Single-wire digital serial interface</li>
+  </ul>
+
+  <h4>Advantages</h4>
+  <ul>
+    <li>Simple to interface with microcontrollers (Arduino, ESP32, ESP8266, Raspberry Pi)</li>
+    <li>Low power consumption</li>
+    <li>Compact and low cost</li>
+    <li>Reliable digital data output</li>
+  </ul>
+
+  <h4>Limitations</h4>
+  <ul>
+    <li>Lower accuracy compared to more advanced sensors (e.g., DHT22)</li>
+    <li>Narrower temperature and humidity ranges</li>
+    <li>Slow sampling rate unsuitable for rapid environmental changes</li>
+  </ul>
+
+  <h4>Applications</h4>
+  <p>Used in weather stations, HVAC systems, environmental monitoring, agriculture, and IoT projects requiring temperature and humidity data.</p>
+
+  <h4>Integration Tips</h4>
+  <ul>
+    <li>Use a pull-up resistor (typically 4.7kΩ) on the data line for stable communication.</li>
+    <li>Ensure power supply voltage is stable (3.3V or 5V depending on your microcontroller).</li>
+    <li>Use libraries like the Adafruit DHT library for easy coding.</li>
+    <li>Place the sensor away from heat sources and direct sunlight to avoid false readings.</li>
+  </ul>
+
+  <h4>Troubleshooting</h4>
+  <ul>
+    <li>Erratic readings may indicate loose wiring or insufficient power.</li>
+    <li>Check timing in your code — sensor requires specific timing to read data.</li>
+    <li>High humidity readings may occur if sensor is close to water or condensation.</li>
+  </ul>
+
+  <hr>
+
+  <h3>Ultrasonic Sensor (HC-SR04)</h3>
+  <p>The <strong>ultrasonic sensor</strong> measures distance by emitting high-frequency sound pulses (~40kHz) and measuring the time it takes for the echo to return after bouncing off an object.</p>
+
+  <h4>Working Principle</h4>
+  <p>The sensor has a transmitter that emits ultrasonic waves and a receiver that listens for their reflection. The time delay between sending and receiving the pulse is used to calculate the distance based on the speed of sound (~343 m/s at room temperature).</p>
+
+  <h4>Specifications</h4>
+  <ul>
+    <li><strong>Operating voltage:</strong> 5V DC</li>
+    <li><strong>Measuring range:</strong> 2 cm to 400 cm (0.8 inch to 13 feet)</li>
+    <li><strong>Accuracy:</strong> ±3 mm</li>
+    <li><strong>Angle of detection:</strong> Approximately 15 degrees</li>
+    <li><strong>Output:</strong> Digital pulse width corresponding to distance</li>
+  </ul>
+
+  <h4>Advantages</h4>
+  <ul>
+    <li>Non-contact measurement</li>
+    <li>Wide range of detection</li>
+    <li>Relatively inexpensive</li>
+    <li>Easy to interface with most microcontrollers</li>
+  </ul>
+
+  <h4>Limitations</h4>
+  <ul>
+    <li>Performance affected by environmental noise and temperature</li>
+    <li>Cannot detect very soft or angled surfaces well (sound may scatter)</li>
+    <li>Requires line of sight</li>
+  </ul>
+
+  <h4>Applications</h4>
+  <p>Obstacle detection, robotics, parking sensors, level measurement, and in your case, wildlife proximity detection.</p>
+
+  <h4>Integration Tips</h4>
+  <ul>
+    <li>Use a 5V supply; if your microcontroller uses 3.3V logic (like ESP32), use a logic level converter for signal lines.</li>
+    <li>Trigger pin needs a 10µs HIGH pulse to start measurement.</li>
+    <li>Measure the pulse width on the echo pin to calculate distance.</li>
+  </ul>
+
+  <h4>Troubleshooting</h4>
+  <ul>
+    <li>False readings may come from objects out of sensor range or soft materials.</li>
+    <li>Ensure there’s no obstruction or noise near the sensor.</li>
+    <li>Wiring issues or power instability can cause erratic behavior.</li>
+  </ul>
+
+  <hr>
+
+  <h3>Sound Sensor</h3>
+  <p>The <strong>sound sensor</strong> detects sound intensity levels in the environment by converting acoustic signals into electrical signals.</p>
+
+  <h4>Working Principle</h4>
+  <p>Typically uses a microphone to pick up ambient sounds, then amplifies and processes the signal to determine sound levels. The sensor outputs an analog voltage proportional to the sound intensity or a digital signal if a threshold is crossed.</p>
+
+  <h4>Specifications</h4>
+  <ul>
+    <li><strong>Operating voltage:</strong> 3.3V to 5V</li>
+    <li><strong>Output:</strong> Analog voltage or digital HIGH/LOW output</li>
+    <li><strong>Sensitivity:</strong> Adjustable via onboard potentiometer on many modules</li>
+  </ul>
+
+  <h4>Advantages</h4>
+  <ul>
+    <li>Simple and low cost</li>
+    <li>Can detect abnormal or loud sounds</li>
+    <li>Easy integration with microcontrollers</li>
+  </ul>
+
+  <h4>Limitations</h4>
+  <ul>
+    <li>Cannot distinguish sound types (just volume)</li>
+    <li>Susceptible to environmental noise</li>
+    <li>Needs calibration for threshold sensitivity</li>
+  </ul>
+
+  <h4>Applications</h4>
+  <p>Noise detection, sound level monitoring, security alarms, and your project’s use for detecting unusual wildlife sounds.</p>
+
+  <h4>Integration Tips</h4>
+  <ul>
+    <li>Connect the output pin to an ADC pin if analog readings are needed.</li>
+    <li>Adjust sensitivity via potentiometer for your environment.</li>
+    <li>Use software filtering to ignore background noise.</li>
+  </ul>
+
+  <h4>Troubleshooting</h4>
+  <ul>
+    <li>False triggers from loud but irrelevant noises.</li>
+    <li>Check power stability and wiring.</li>
+    <li>Use shielding or noise reduction techniques if needed.</li>
+  </ul>
+
+  <hr>
+
+  <h3>Gas/Smoke Sensors (MQ Series)</h3>
+  <p>Gas and smoke sensors detect harmful gases such as carbon monoxide, methane, LPG, or smoke particles, providing early warning of fire hazards or environmental threats.</p>
+
+  <h4>Working Principle</h4>
+  <p>Most common gas sensors (e.g., MQ-2, MQ-5) use a heated semiconductor sensor whose resistance changes when it comes into contact with certain gases. This change in resistance is converted to an analog voltage signal proportional to gas concentration.</p>
+
+  <h4>Specifications</h4>
+  <ul>
+    <li><strong>Operating voltage:</strong> 5V DC</li>
+    <li><strong>Detection gases:</strong> Varies by model (e.g., MQ-2 detects smoke, propane, methane)</li>
+    <li><strong>Output:</strong> Analog voltage</li>
+    <li><strong>Preheat time:</strong> Typically 20 seconds to stabilize</li>
+  </ul>
+
+  <h4>Advantages</h4>
+  <ul>
+    <li>Affordable and easy to use</li>
+    <li>Detects multiple types of gases</li>
+    <li>Provides analog output for flexible thresholding</li>
+  </ul>
+
+  <h4>Limitations</h4>
+  <ul>
+    <li>Requires warm-up time before accurate readings</li>
+    <li>Sensor aging and contamination can affect accuracy</li>
+    <li>Not highly selective; cross-sensitivity to other gases</li>
+  </ul>
+
+  <h4>Applications</h4>
+  <p>Fire detection, industrial safety, air quality monitoring, and detecting human interference risks in wildlife habitats.</p>
+
+  <h4>Integration Tips</h4>
+  <ul>
+    <li>Use a dedicated ADC or ensure your microcontroller’s ADC has adequate resolution.</li>
+    <li>Calibrate sensor periodically with known gas concentrations if possible.</li>
+    <li>Allow sensor to warm up after powering on before taking readings.</li>
+  </ul>
+
+  <h4>Troubleshooting</h4>
+  <ul>
+    <li>Unstable readings if warm-up time is insufficient.</li>
+    <li>False positives from environmental gases or humidity changes.</li>
+    <li>Check sensor connections and power supply stability.</li>
+  </ul>
+
+  <hr>
+
+  <h3>Integration and Calibration</h3>
+  <p>For reliable system performance:</p>
+  <ul>
+    <li>Each sensor must be individually calibrated considering environmental conditions.</li>
+    <li>Use logic level converters when interfacing 5V sensors with 3.3V microcontrollers like ESP8266 or ESP32 to prevent damage.</li>
+    <li>Maintain clean wiring and secure connections.</li>
+    <li>Apply software filtering or averaging to reduce noise and false triggers.</li>
+    <li>Test sensors extensively in real-world conditions for fine-tuning thresholds and alerts.</li>
+  </ul>
+
+</section>
+
 
   <!-- Board Integration section with fade-up animation -->
   <section id="integration" data-aos="fade-up">
