@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<!-- Declares the document type and version of HTML (HTML5 here) -->
+<html lang="en">
+<!-- Root element of the HTML document, 'lang' specifies language as English -->
+<head>
+  <!-- Metadata container: contains meta info, title, links to CSS, etc. -->
+  <meta charset="UTF-8" />
+  <!-- Sets character encoding to UTF-8 for broad character support -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Ensures proper scaling on different devices (responsive design) -->
+  <title>TCPPFWA - Wildlife Protection Project</title>
+  <!-- Title shown on browser tab -->
+
+  <!-- Link to external CSS for Animate On Scroll (AOS) library styles -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+
+  <!-- Internal CSS styles start -->
+  <style>
+    /* Body styling */
+    body {
+      margin: 0; /* Removes default margin */
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Sets font stack */
+      background: #111; /* Dark background color */
+      color: #fff; /* White text color */
+      line-height: 1.6; /* Improves readability by spacing lines */
+    }
+
+    /* Styles for header and footer elements */
+    header, footer {
+      background: #000; /* Pure black background */
+      padding: 20px; /* Space inside */
+      text-align: center; /* Center-aligns text */
+      font-size: 1.5rem; /* Larger font size */
+    }
+
+    /* Styles for navigation links */
+    nav a {
+      margin: 0 15px; /* Horizontal spacing between links */
+      color: #0ff; /* Cyan text color */
+      text-decoration: none; /* Removes underline */
+      transition: color 0.3s; /* Smooth color change on hover */
+    }
+
+    /* Hover effect for navigation links */
+    nav a:hover {
+      color: #fff; /* Changes link color to white when hovered */
+    }
+
+    /* General styling for section elements */
+    section {
+      padding: 60px 20px; /* Vertical and horizontal padding */
+      max-width: 1200px; /* Limits width for readability */
+      margin: auto; /* Centers section horizontally */
+    }
+
+    /* Headings level 2 styling */
+    h2 {
+      color: #0ff; /* Cyan color for section headings */
+    }
+
+    /* Image styling for responsiveness and aesthetics */
+    img {
+      max-width: 100%; /* Prevents images from exceeding container width */
+      height: auto; /* Maintains aspect ratio */
+      border-radius: 12px; /* Rounded corners */
+    }
+
+    /* Specific styling for images inside gallery class */
+    .gallery img {
+      width: 200px; /* Fixed width */
+      margin: 10px; /* Space around images */
+      border: 2px solid #0ff; /* Cyan border */
+      box-shadow: 0 0 20px #0ff; /* Cyan glow effect */
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header section with fade-down animation from AOS -->
+  <header data-aos="fade-down">
+    <h1>TCPPFWA</h1>
+    <!-- Main project title -->
+    <p>The Civilian Protection Project From Wild Animals</p>
+    <!-- Project tagline -->
+    <nav>
+      <!-- Navigation links with anchor tags pointing to sections by ID -->
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#sensors">Sensors</a>
+      <a href="#integration">Board Integration</a>
+      <a href="#troubleshooting">Troubleshooting</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#downloads">Downloads</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Home section with fade-up animation -->
+  <section id="home" data-aos="fade-up">
+    <h2>Welcome</h2>
+    <p>TCPPFWA is a revolutionary IoT-based solution designed to protect civilians from wildlife encounters using real-time sensor alerts, automated systems, and active community participation.</p>
+  </section>
+
+  <!-- About section with fade-right animation -->
+  <section id="about" data-aos="fade-right">
+    <h2>About</h2>
+    <p>This project aims to monitor and respond to potential wildlife threats—especially in forest border regions like Wayanad. The system utilizes multiple sensors and a Wi-Fi-enabled board to alert local communities in real-time.</p>
+  </section>
+
+  <!-- Sensors documentation section with fade-left animation -->
+  <section id="sensors" data-aos="fade-left">
+    <h2>Sensor Documentation</h2>
+    <p><strong>DHT11 Sensor:</strong> Measures temperature and humidity. Essential for monitoring climate changes that might affect animal behavior.</p>
+    <p><strong>Ultrasonic Sensor:</strong> Detects movement or obstacles within a defined range. Used to sense nearby animal presence or movement patterns.</p>
+    <p><strong>Sound Sensor:</strong> Detects unexpected or abnormal sounds like elephant trumpets or wildlife roars, triggering the alert system.</p>
+    <p><strong>Gas/Smoke Sensors:</strong> Helpful for detecting harmful gases or human interference like fire that can cause panic among animals.</p>
+    <p>Each sensor is individually calibrated and integrated with the board. Always connect sensors through a logic level converter if the board requires 3.3V logic (like the ESP8266 or ESP32).</p>
+  </section>
+
+  <!-- Board Integration section with fade-up animation -->
+  <section id="integration" data-aos="fade-up">
+    <h2>Board Integration</h2>
+    <p>The ESP8266/ESP32 is used to connect sensors and transmit data over Wi-Fi. It communicates with platforms like Adafruit IO or Blynk using MQTT or HTTP.</p>
+    <p><strong>Key Notes:</strong></p>
+    <ul>
+      <li>Ensure the board has adequate power via an external power module.</li>
+      <li>Use GPIO pins carefully to avoid conflicts (e.g., avoid GPIO0, GPIO2 for pull-ups).</li>
+      <li>Install required libraries like <code>Adafruit_Sensor</code>, <code>DHT</code>, <code>PubSubClient</code> or <code>BlynkSimpleEsp8266</code>.</li>
+    </ul>
+    <p>Use resistors for pull-up/down logic where necessary, especially for analog sensors.</p>
+  </section>
+
+  <!-- Troubleshooting section with fade-down animation -->
+  <section id="troubleshooting" data-aos="fade-down">
+    <h2>Troubleshooting</h2>
+    <p><strong>Problem:</strong> ESP8266 not connecting to Wi-Fi.<br>
+    <strong>Solution:</strong> Double check SSID/password. Ensure board is close to the router. Use 2.4GHz band.</p>
+
+    <p><strong>Problem:</strong> Sensors not reading values.<br>
+    <strong>Solution:</strong> Check power and ground lines. Ensure pins match with the code. Add delays where needed to allow sensor response.</p>
+
+    <p><strong>Problem:</strong> Data not showing on Blynk/Adafruit IO.<br>
+    <strong>Solution:</strong> Confirm token/username/AIO key. Recheck feed/topic names.</p>
+  </section>
+
+  <!-- Gallery section with zoom-in animation -->
+  <section id="gallery" data-aos="zoom-in">
+    <h2>Gallery</h2>
+    <div class="gallery">
+      <!-- Images with alt text for accessibility -->
+      <img src="/home/kdkcreate/Documents/wayanad.webp" alt="WAYANAD">
+      <img src="Indian_elephant_male.jpg" alt="Elephant" />
+      <img src="512px-Wayanad_wildlife_sanctuary.webp" alt="Wild elephants" />
+      <img src="esp32-dev-board.webp" alt="ESP32 Board" />
+      <img src="Arduino_IDE_logo.webp" alt="SOFTWARE"/>
+    </div>
+  </section>
+
+  <!-- Downloads section with fade-left animation -->
+  <section id="downloads" data-aos="fade-left">
+    <h2>Downloads</h2>
+    <!-- Links styled inline with cyan color -->
+    <p>We'll upload source code soon</p>
+  </section>
+
+  <!-- Contact section with fade-up animation -->
+  <section id="contact" data-aos="fade-up">
+    <h2>Contact</h2>
+    <!-- Contact info -->
+    <p>Email: kdkcreate39@gmail.com</p>
+    <p>Phone: +91-7025046296</p>
+  </section>
+
+  <!-- Footer with fade animation -->
+  <footer data-aos="fade">
+    <p>© 2025 TCPPFWA | All Rights Reserved</p>
+    <p1>CREATE | INNVOATE | PROTECT </p1>
+  </footer>
+
+  <!-- Link to AOS (Animate On Scroll) JavaScript library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    // Initialize AOS animations with duration set to 1200 milliseconds
+    AOS.init({ duration: 1200 });
+  </script>
+</body>
+</html>
+
