@@ -138,6 +138,23 @@
     footer a:hover {
       text-decoration: underline;
     }
+
+    /* Tick mark animation styles */
+    .tick {
+      display: inline-block;
+      margin-left: 8px;
+      color: limegreen;
+      font-weight: bold;
+      opacity: 0;
+      transform: scale(0);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      user-select: none;
+      font-size: 1.2em;
+    }
+    .tick.show {
+      opacity: 1;
+      transform: scale(1);
+    }
   </style>
 </head>
 
@@ -379,72 +396,95 @@
     <ul>
       <li>Ensure the board has adequate power via an external power module.</li>
       <li>Use GPIO pins carefully to avoid conflicts (e.g., avoid GPIO0, GPIO2 for pull-ups).</li>
-      <li>Install required libraries like <code>Adafruit_Sensor</code>, <code>DHT</code>, <code>PubSubClient</code> or <code>BlynkSimpleEsp8266</code>.</li>
+      <li>Install required libraries like <em>ESP8266WiFi</em>, <em>PubSubClient</em> for MQTT, and sensor-specific libraries.</li>
+      <li>Test sensor outputs with serial monitor before wireless integration.</li>
     </ul>
-    <p>Use resistors for pull-up/down logic where necessary, especially for analog sensors.</p>
   </section>
 
-  <!-- Troubleshooting section with fade-down animation -->
-  <section id="troubleshooting" data-aos="fade-down">
+  <!-- Troubleshooting section with fade-right animation -->
+  <section id="troubleshooting" data-aos="fade-right">
     <h2>Troubleshooting</h2>
-    <p><strong>Problem:</strong> ESP8266 not connecting to Wi-Fi.<br>
-    <strong>Solution:</strong> Double check SSID/password. Ensure board is close to the router. Use 2.4GHz band.</p>
-
-    <p><strong>Problem:</strong> Sensors not reading values.<br>
-    <strong>Solution:</strong> Check power and ground lines. Ensure pins match with the code. Add delays where needed to allow sensor response.</p>
-
-    <p><strong>Problem:</strong> Data not showing on Blynk/Adafruit IO.<br>
-    <strong>Solution:</strong> Confirm token/username/AIO key. Recheck feed/topic names.</p>
+    <p>If sensors behave erratically or do not output correct data, try the following:</p>
+    <ul>
+      <li>Check all wiring and solder joints for reliability.</li>
+      <li>Verify power supply voltage and current capability.</li>
+      <li>Test each sensor individually before integration.</li>
+      <li>Use serial debug messages to confirm sensor data at each step.</li>
+      <li>Confirm correct libraries and versions are installed.</li>
+      <li>Ensure correct GPIO pins are used and configured in your code.</li>
+    </ul>
   </section>
 
-  <!-- Gallery section with zoom-in animation -->
-  <section id="gallery" data-aos="zoom-in">
+  <!-- Gallery section with fade-up animation -->
+  <section id="gallery" class="gallery" data-aos="fade-up">
     <h2>Gallery</h2>
-    <div class="gallery">
-      <!-- Images with alt text for accessibility -->
-      <img src="512px-Wayanad_wildlife_sanctuary.webp" alt="Wild elephants" />
-      <img src="esp32-dev-board.webp" alt="ESP32 Board" />
-      <img src="Arduino_IDE_logo.webp" alt="SOFTWARE"/>
-      <img src="dht.webp" alt="dht sensor" />
-      <img src="ultrasonic sensor.webp" alt="ultrasonic sensor" />
-      <img src="INMP441-Pinout.webp" alt="sound sensor" />
-    </div>
+    <img src="sensor-setup.webp" alt="Sensor Setup Image" />
+    <img src="board-connection.webp" alt="Board Connection Image" />
+    <img src="project-layout.webp" alt="Project Layout Image" />
   </section>
 
   <!-- Downloads section with fade-left animation -->
-<section id="HC-SR04 library download" data-aos="fade-left">
-  <h2>HC-SR04 library download</h2>
-  <p>Click below to download the HC-SR04 library files from our GitHub branch <strong>HCSR04</strong>:</p>
-  <ul>
-    <li><a href="https://github.com/kdkcreate/ultrasonic-sensor-library/archive/refs/heads/main.zip" style="color: cyan;">Download Entire Library as ZIP</a></li>
-  </ul>
-</section>
-<section id="DHT11 library download" data-aos="fade-left">
-  <h2>DHT11 library download</h2>
-  <p>Click below to download the DHT11 library files from GITHUB <strong>HCSR04</strong>:</p>
-  <ul>
-    <li><a href="https://github.com/dhrubasaha08/DHT11/archive/refs/heads/main.zip" style="color: cyan;">Download Library as ZIP</a></li>
-  </ul>
-</section>
+  <section id="downloads" data-aos="fade-left">
+    <h2>Downloads</h2>
+    <p>We'll upload source code soon. Meanwhile, download libraries below:</p>
+
+    <section id="HC-SR04 library download" data-aos="fade-left">
+      <h2>HC-SR04 library download</h2>
+      <p>Click below to download the HC-SR04 library files from our GitHub branch <strong>HCSR04</strong>:</p>
+      <ul>
+        <li>
+          <a href="https://github.com/kdkcreate/ultrasonic-sensor-library/archive/refs/heads/main.zip" 
+             style="color: cyan;" class="download-link" target="_blank" rel="noopener noreferrer">
+            Download Entire Library as ZIP
+          </a>
+          <span class="tick">&#10003;</span>
+        </li>
+      </ul>
+    </section>
+
+    <section id="DHT11 library download" data-aos="fade-left">
+      <h2>DHT11 library download</h2>
+      <p>Click below to download the DHT11 library files from GITHUB <strong>HCSR04</strong>:</p>
+      <ul>
+        <li>
+          <a href="https://github.com/dhrubasaha08/DHT11/archive/refs/heads/main.zip" 
+             style="color: cyan;" class="download-link" target="_blank" rel="noopener noreferrer">
+            Download Library as ZIP
+          </a>
+          <span class="tick">&#10003;</span>
+        </li>
+      </ul>
+    </section>
+  </section>
 
   <!-- Contact section with fade-up animation -->
   <section id="contact" data-aos="fade-up">
     <h2>Contact</h2>
-    <!-- Contact info -->
-    <p>Email: kdkcreate39@gmail.com</p>
+    <p>For more information or to contribute, reach out via <a href="mailto:contact@tcppfwa.org">contact@tcppfwa.org</a>.</p>
   </section>
 
-  <!-- Footer with fade animation -->
-  <footer data-aos="fade">
-    <p>© 2025 TCPPFWA | Licensed under the <a href="https://opensource.org/licenses/MIT" target="_blank">MIT License</a></p>
-    <p1>CREATE | INNVOATE | PROTECT </p1>
+  <!-- Footer section -->
+  <footer>
+    &copy; 2025 TCPPFWA - Wildlife Protection Project. All rights reserved.
   </footer>
 
-  <!-- Link to AOS (Animate On Scroll) JavaScript library -->
+  <!-- Scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>
-    // Initialize AOS animations with duration set to 1200 milliseconds
-    AOS.init({ duration: 1200 });
+    AOS.init();
+
+    // Download tick animation on click
+    document.querySelectorAll('.download-link').forEach(link => {
+      link.addEventListener('click', () => {
+        const tick = link.nextElementSibling;
+        if (tick) {
+          tick.classList.add('show');
+          setTimeout(() => {
+            tick.classList.remove('show');
+          }, 2000);
+        }
+      });
+    });
   </script>
 </body>
 </html>
