@@ -346,9 +346,14 @@
 
     <section id="troubleshooting" data-aos="fade-down">
       <h2>Troubleshooting</h2>
-      <p><strong>ESP8266 Wi-Fi issues:</strong> Double check SSID/password; use 2.4GHz band.</p>
+      <p><strong>ESP8266 Wi-Fi issues:</strong> Double check SSID/password(in program developers will take care of this but we need a stable neternet connection for this); use 2.4GHz band.</p>
       <p><strong>Sensors not reading:</strong> Check wiring and pins; add sensor delays.</p>
-      <p><strong>Data not showing on dashboard:</strong> Confirm tokens and topics.</p>
+      <p><strong>Data not showing on dashboard:</strong> Confirm tokens and topics. And confirm the wiring to the sensors are not hindered if the cables are not correctly setup then
+      the board will not be able to connect and recive signals from the sensor therefore not display readings we'll try to enforce failsafes but these will take time to program and 
+      implment</p>
+      <p><strong>THE LCD IS SHOWING JIBBERISH</strong> ENSURE THE CONNECTIONS ARE CORRECT I.E DEPENDING ON THE MODEL OF THE BOARD i.e ESP-32 OR ESP-8266 THAT IS IF THE BOARD IS 
+      OF MODEL ESP-32 THEN MAKE THE SDA LINE OF THE LCD IS CONNECTED TO THE PORT 21 OF THE BOARD AND SCL LINE IS CONNECTED TO THE PORT 22 OF THE ESP-32; IF THE BOARD IS OF MODEL 
+      ESP-8266 THE SDA WILL BE D1 AND SCL WILL BE D2</p>
     </section>
 
     <section id="gallery" data-aos="zoom-in">
